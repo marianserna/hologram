@@ -5,7 +5,7 @@ class Scene {
 
     this.init();
     this.addLights();
-    this.addSphere();
+    this.addFox();
     this.addPeppersGhost();
     this.loop();
 
@@ -23,7 +23,7 @@ class Scene {
   init() {
     this.scene = new THREE.Scene();
     this.camera = new THREE.PerspectiveCamera(60, this.width() / this.height(), 1, 100000);
-    // this.camera.position.set(0, 0, 50);
+    // this.camera.position.set(0, 0, 100);
     // this.camera.lookAt(new THREE.Vector3(0, 0, 0));
 
     this.renderer = new THREE.WebGLRenderer({
@@ -34,6 +34,8 @@ class Scene {
     this.renderer.setSize(this.width(), this.height());
 
     this.container.appendChild(this.renderer.domElement);
+
+    // const controls = new THREE.OrbitControls(this.camera, this.renderer.domElement);
   }
 
   addLights() {
@@ -47,11 +49,9 @@ class Scene {
 		this.effect.cameraDistance = 50;
   }
 
-  addSphere() {
-    const geometry = new THREE.SphereBufferGeometry( 10, 32, 32 );
-    const material = new THREE.MeshBasicMaterial( {color: 0xffff00} );
-    const sphere = new THREE.Mesh( geometry, material );
-    this.scene.add( sphere );
+  addFox() {
+    this.fox = new Fox();
+    this.scene.add(this.fox.group);
   }
 
   handleResize() {
@@ -69,7 +69,6 @@ class Scene {
 
   render() {
     this.camera.lookAt(this.scene.position);
-
     this.effect.render(this.scene, this.camera);
   }
 }
