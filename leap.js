@@ -4,6 +4,9 @@
 const Leap = require('leapjs');
 const fetch = require('node-fetch');
 
+const env = process.env.ENVIRONMENT || 'heroku';
+const host = env === 'heroku' ? 'https://fox-hologram.herokuapp.com' : 'http://localhost:3000';
+
 let lastFrame = null;
 
 // Constantly update last frame
@@ -25,7 +28,7 @@ function sendFrame() {
   };
   console.log(data);
 
-  fetch('http://localhost:8080/sensor-update', {
+  fetch(`${host}/sensor-update`, {
     method: 'post',
     body: JSON.stringify(data),
     headers: {

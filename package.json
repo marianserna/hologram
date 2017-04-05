@@ -7,7 +7,8 @@
   "license": "MIT",
   "scripts": {
     "server": "node index.js",
-    "leap": "node leap.js"
+    "leap": "node leap.js",
+    "leap-local": "ENVIRONMENT=local node leap.js"
   },
   "dependencies": {
     "body-parser": "^1.17.1",

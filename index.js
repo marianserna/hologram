@@ -8,7 +8,7 @@ const bodyParser = require('body-parser');
 
 // Middleware: Search for static files in the public folder
 app.use(express.static('public'));
-// Looks at incoming body of the request and converts it into json 
+// Looks at incoming body of the request and converts it into json
 app.use(bodyParser.json());
 
 // https://expressjs.com/en/starter/basic-routing.html
@@ -19,4 +19,4 @@ app.post('/sensor-update', (req, res) => {
   res.send('OK');
 });
 
-server.listen(8080);
+server.listen(process.env.PORT || 3000);
