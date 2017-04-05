@@ -173,4 +173,8 @@ class Fox {
 
       return new THREE.Mesh(geometry, material);
   }
+
+  setYaw(yaw) {
+    this.group.rotation.y = yaw;
+  }
 }

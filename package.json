@@ -1,0 +1,19 @@
+{
+  "name": "hologram",
+  "version": "1.0.0",
+  "description": "hologram + leap motion experiment",
+  "main": "index.js",
+  "author": "Marian <marianhalliday@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "server": "node index.js",
+    "leap": "node leap.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "leapjs": "^0.6.4",
+    "node-fetch": "^1.6.3",
+    "socket.io": "^1.7.3"
+  }
+}
