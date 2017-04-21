@@ -9,12 +9,12 @@ const host = env === 'heroku' ? 'https://fox-hologram.herokuapp.com' : 'http://l
 
 let lastFrame = null;
 
-// Constantly update last frame
+// Constantly update last frame. Store the latest info in the last frame because not all of it can be used
 Leap.loop((frame) => {
   lastFrame = frame;
 });
 
-// Post frames to server
+// Post frames to server. If no info, pause 100ms and check again
 function sendFrame() {
   if (lastFrame === null || lastFrame.hands.length === 0) {
     setTimeout(() => {
@@ -23,7 +23,9 @@ function sendFrame() {
     return;
   }
 
+  // When there is data(there is a frame with hands info)
   const data = {
+    // setting yaw to be whatever degree of rotation of the hand
     yaw: lastFrame.hands[0].yaw()
   };
   console.log(data);

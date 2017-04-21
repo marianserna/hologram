@@ -23,8 +23,6 @@ class Scene {
   init() {
     this.scene = new THREE.Scene();
     this.camera = new THREE.PerspectiveCamera(60, this.width() / this.height(), 1, 100000);
-    // this.camera.position.set(0, 0, 100);
-    // this.camera.lookAt(new THREE.Vector3(0, 0, 0));
 
     this.renderer = new THREE.WebGLRenderer({
       alpha: true,
@@ -34,8 +32,6 @@ class Scene {
     this.renderer.setSize(this.width(), this.height());
 
     this.container.appendChild(this.renderer.domElement);
-
-    // const controls = new THREE.OrbitControls(this.camera, this.renderer.domElement);
   }
 
   addLights() {

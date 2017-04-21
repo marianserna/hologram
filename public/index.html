@@ -6,10 +6,9 @@
     <title>Hologramita</title>
     <link rel="stylesheet" href="css/style.css">
   </head>
-  <body>
 
+  <body>
     <script src="https://ajax.googleapis.com/ajax/libs/threejs/r84/three.min.js"></script>
-    <script src="https://js.leapmotion.com/leap-0.6.4.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.min.js"></script>
 
     <script src="js/Scene.js"></script>
@@ -21,12 +20,12 @@
     <script>
       const scene = new Scene();
 
+      // Real time updates to the right server (heroku or local depending on your environment)
       const socket = io(`${window.location.protocol}//${window.location.host}`);
+      // Listening for sensor-update event coming from express-heroku server
       socket.on('sensor-update', (data) => {
         scene.fox.setYaw(data.yaw);
-        data.yaw;
       });
     </script>
-
   </body>
 </html>
